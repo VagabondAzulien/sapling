@@ -1,3 +1,8 @@
+<!--
+# @markup markdown
+# @title Configuration File
+-->
+
 # Configuration File Documentation
 
 The configuration file for `sapling` is a standard YAML file. The general

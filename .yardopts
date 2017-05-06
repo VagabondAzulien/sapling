@@ -1,0 +1,9 @@
+--title "Sapling Documentation"
+-
+README.md
+docs/config_file.md
+docs/config_file_example.md
+docs/editor.md
+CONTRIBUTING.md
+LICENSE
+lib/**.*.rb

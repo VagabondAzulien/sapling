@@ -9,7 +9,7 @@ module Gardner
   # Parse the branch
   #
   # @param tree [Array] The dialogue tree
-  # @return branches [Array] The array of options on the branch.
+  # @return [Array] The array of options on the branch.
   def self.prune_branches(tree)
     branches = { 0 => { "desc" => "Thanks for using Sapling!" } }
     tree.each do |b|
@@ -25,7 +25,7 @@ module Gardner
   # Parse the options
   #
   # @param leaves [Array] The option of leaf hashes
-  # @return options [Hash] A has of options
+  # @return [Hash] A has of options
   def self.prune_leaves(leaves)
     x = 1
     options = {}
@@ -45,7 +45,7 @@ module Gardner
   # The trunk is like the introduction to the tree.
   #
   # @param tree [Hash] The entire tree
-  # @return tree [Hash] The tree without the trunk
+  # @return [Hash] The tree without the trunk
   def self.prune_trunk(tree)
     trunk = tree.shift
     puts "Welcome to Sapling, a Dialogue Tree Utility.\n"
@@ -61,7 +61,7 @@ module Gardner
   # The main method for Sapling. From here, the tree is grown.
   #
   # @param file [File] The dialogue tree file
-  # @return branches [Hash] The final, constructed data set
+  # @return [Hash] The final, constructed data set
   def self.grow(file)
       tree = YAML.load_file(file[0])
       tree = Gardner.prune_trunk(tree)
@@ -73,7 +73,7 @@ module Gardner
   # Verify that a file is a dialogue tree file.
   #
   # @param file [File] The provided file
-  # @return status [Boolean] True if the file is a tree; false otherwise
+  # @return [Boolean] True if the file is a tree; false otherwise
   def self.verify_tree(file)
     results = []
     begin
@@ -97,7 +97,10 @@ end
 # Dialogue is the module for traversing an existing tree.
 module Dialogue
 
+  # Spealer holds the functionality for viewing and going through a dialogue
+  # tree.
   class Speaker
+    # The file, which should be a dialogue tree YAML file.
     attr_accessor :file
 
     def initialize
@@ -106,7 +109,6 @@ module Dialogue
 
     # Conversation handles navigating the tree, until the option to end is
     # reached.
-    #
     def conversation()
       tree = Gardner.grow(@file)
 
@@ -123,7 +125,7 @@ module Dialogue
     # Talk displays a branch, the options, and prompts for a response
     #
     # @param branch [Hash] A branch data set
-    # @return response [Integer] The number of the next branch
+    # @return [Integer] The number of the next branch
     def talk(branch)
       # If there are no options on this branch, we assume it's a terminal
       # branch. Return 0, and end the program.
@@ -165,56 +167,57 @@ module Planter
 
 end
 
-# Parsing is the class for option parsing, and the gateway to the program
-class Parsing
+# Sapling is the main module for the program. From here, the rest of the world
+# starts building.
+module Sapling
 
-  # Option parsing, and gateway to either reading and traversing a tree, or
-  # editing/creating a tree.
-  #
-  # @params file [String] The location of the file to read, or write.
-  def talk(options)
-    opt_parser = OptionParser.new do |opt|
-      opt.banner = "Usage: sapling -t FILE\n" \
-                   "Usage: sapling -e [FILE]"
+  # CLI is the class for option parsing, and the gateway to the program
+  class CLI
 
-      opt.on_tail("-h", "--help", "Show this menu") do
-        puts opt
+    # Option parsing, and gateway to either reading and traversing a tree, or
+    # editing/creating a tree.
+    def talk(options)
+      opt_parser = OptionParser.new do |opt|
+        opt.banner = "Usage: sapling -t FILE\n" \
+                     "Usage: sapling -e [FILE]"
+
+        opt.on_tail("-h", "--help", "Show this menu") do
+          puts opt
+          exit
+        end
+
+        opt.on("-t", "--talk",
+               "Begin traversing the provided dialogue tree") do
+
+          if ARGV.empty?
+            puts opt_parser
+            exit
+          end
+
+          unless Gardner.verify_tree(ARGV[0])
+            puts "\n#{opt}\n"
+            exit
+          end
+
+          speaker = Dialogue::Speaker.new
+          speaker.file = ARGV
+          speaker.conversation
+        end
+
+        opt.on("-e", "--edit",
+               "Create or edit a dialogue tree") do
+          puts "We gonna make a tree!"
+        end
+
+      end
+      opt_parser.parse!(options)
+
+      if ARGV.empty?
+        puts opt_parser
         exit
       end
-
-      opt.on("-t", "--talk",
-             "Begin traversing the provided dialogue tree") do
-
-        if ARGV.empty?
-          puts opt_parser
-          exit
-        end
-
-        unless Gardner.verify_tree(ARGV[0])
-          puts "\n#{opt}\n"
-          exit
-        end
-
-        speaker = Dialogue::Speaker.new
-        speaker.file = ARGV
-        speaker.conversation
-      end
-
-      opt.on("-e", "--edit",
-             "Create or edit a dialogue tree") do
-        puts "We gonna make a tree!"
-      end
-
     end
-    opt_parser.parse!(options)
-
-    if ARGV.empty?
-      puts opt_parser
-      exit
-    end
-
   end
-
 end
 
-Parsing.new.talk(ARGV)
+Sapling::CLI.new.talk(ARGV)
