@@ -1,9 +1,9 @@
 --title "Sapling Documentation"
 -
 README.md
-docs/config_file.md
-docs/config_file_example.md
-docs/editor.md
+var/docs/config_file.md
+var/docs/config_file_example.md
+var/docs/editor.md
 CONTRIBUTING.md
 LICENSE
 lib/**.*.rb

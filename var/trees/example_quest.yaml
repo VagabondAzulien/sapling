@@ -1,0 +1,74 @@
+---
+- trunk: "Example Quest: Learn what it looks like to use Sapling!"
+
+-
+  branch:
+    number: 1
+    text: "You stumble upon the first branch of a dialogue tree.
+           You find yourself at a junction..."
+    leaf:
+      -
+        text: "Go to the next branch."
+        branch: 2
+      -
+        text: "Go to the frigid north-lands, because there's always a
+          frigid north-lands."
+        branch: 3
+      -
+        text: "Leave this silly place, but with a reason."
+        branch: 5
+      -
+        text: "Leave this silly place immediately, without any reason."
+        branch: 0
+-
+  branch:
+    number: 2
+    text: "Ye find ye-self at branch 2. Your options are north, south
+           or Dennis."
+    leaf:
+      -
+        text: "North, to frigidity!"
+        branch: 3
+      -
+        text: "South, back the way you came!"
+        branch: 1
+      -
+        text: "Dennis"
+        branch: 6
+-
+  branch:
+    number: 3
+    text: "It's cold up here. You decide to go someplace else!"
+    leaf:
+      -
+        text: "Head on home."
+        branch: 4
+      -
+        text: "Head south (back the way you came)"
+        branch: 2
+-
+  branch:
+    number: 4
+    text: "You head on home! Bye bye!"
+-
+  branch:
+    number: 5
+    text: "You leave the dialogue tree, and all its textual glory, behind
+      and go find a nice GUI to settle down with."
+-
+  branch:
+    number: 6
+    text: "Dennis appreciates your interest, but is really just trying to
+      hangout and play video games."
+    leaf:
+      -
+        text: "Join Dennis, and play video games with him."
+        branch: 7
+      -
+        text: "Reconsider your options."
+        branch: 2
+-
+  branch:
+    number: 7
+    text: "You sit down next to Dennis, and together you conquer all sorts of
+      realms and wizards and stuff. Nice!"
