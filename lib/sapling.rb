@@ -29,6 +29,9 @@ module Gardner
   def self.prune_leaves(leaves)
     x = 1
     options = {}
+
+    return options if leaves.nil?
+
     leaves.each do |l|
       options[x] = { l["text"] => l["branch"] }
       x += 1
@@ -101,18 +104,12 @@ module Dialogue
       @file = ""
     end
 
-    # Scribe generates the new data set, which provides properly organized
-    # branches and choices
-    def scribe
-      tree = Gardner.grow(@file)
-      conversation(tree)
-    end
-
     # Conversation handles navigating the tree, until the option to end is
     # reached.
     #
-    # @param tree [Hash] The data set of branches and associated choices
-    def conversation(tree)
+    def conversation()
+      tree = Gardner.grow(@file)
+
       10.times { print "*" }
       next_branch = talk(tree[1])
       until next_branch == 0 do
@@ -128,14 +125,30 @@ module Dialogue
     # @param branch [Hash] A branch data set
     # @return response [Integer] The number of the next branch
     def talk(branch)
+      # If there are no options on this branch, we assume it's a terminal
+      # branch. Return 0, and end the program.
+      if branch["options"].empty?
+        puts "\n#{branch["desc"]}\n\n"
+        return 0
+      end
+
+      valid_options = branch["options"].keys.join(", ")
+
       puts "\n#{branch["desc"]}\n\n"
       branch["options"].each_pair do |k,v|
         puts "\t#{k}: #{v.keys[0]}"
       end
 
-      print "> "
+      print "\n[#{valid_options}]> "
       STDOUT.flush
       response = STDIN.gets.chomp.to_i
+
+      until branch["options"].keys.include?(response)
+        print "[## Invalid options. "
+        print "Valid options are #{valid_options}, or 0 to exit."
+        print "\n[#{valid_options}]> "
+        response = STDIN.gets.chomp.to_i
+      end
 
       puts "\n"
       10.times { print "*" }
@@ -161,7 +174,8 @@ class Parsing
   # @params file [String] The location of the file to read, or write.
   def talk(options)
     opt_parser = OptionParser.new do |opt|
-      opt.banner = "Usage: sapling [-t][-e] FILE" \
+      opt.banner = "Usage: sapling -t FILE\n" \
+                   "Usage: sapling -e [FILE]"
 
       opt.on_tail("-h", "--help", "Show this menu") do
         puts opt
@@ -183,7 +197,7 @@ class Parsing
 
         speaker = Dialogue::Speaker.new
         speaker.file = ARGV
-        speaker.scribe
+        speaker.conversation
       end
 
       opt.on("-e", "--edit",
@@ -204,42 +218,3 @@ class Parsing
 end
 
 Parsing.new.talk(ARGV)
-
-=begin
-
-For a given tree:
-
-tree[0] is the trunk. We want to display this, then pull it out of the array.
-With the trunk gone, the remaining tree top-level elements are branches.
-Now, we can parse each branch by doing tree.each { |b| parse_branch(b) }
-parse_branch puts each branch into an array, at the location of it's number
-At branch[0], it puts logic to end the program.
-Now, we have a convenient way of moving around: when a leaf points to a branch,
-we just reference branch[n] to get to that branch.
-
-Traversing the tree thus goes like such:
-- Start the loop by pulling in the appropriate branch. If the branch called is [0],
-then we're done. End the program.
-- Display all relevant information, formatted to display the text, followed by a
-blank line, followed by the options, 1 per line, and numbered accordingly. At the
-bottom is a prompt.
-- The prompt expects a number. Anything not a number just displays another prompt
-on the next line.
-- Upon choosing that option, restart the loop with the new branch.
-
-Parsing a branch:
-- Format is tree[x] = branch element
-            tree[x]["branch"]["number"] is the branch number, aka the @branches array place
-            tree[x]["branch"]["text"] is the branch text
-  branches[tree[x]["branch"]["number"] = {
-    "desc" => tree[x]["branch"]["text"],
-    "options" => options_hash }
-  options_hash = {}
-
-  { branch_number =>
-    { "desc" => branch_text,
-      "options" => {
-      { 1 => { leaf_text => next_branch },
-        2 => { leaf_text => next_branch }}
-
-=end
