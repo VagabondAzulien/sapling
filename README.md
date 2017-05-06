@@ -68,5 +68,3 @@ You can contribute to Sapling by following these instructions:
 
 Sapling is licensed under the MIT license. The full text can be found in
 [LICENSE](LICENSE).
-
-(c) 2017 Bill Niblock
