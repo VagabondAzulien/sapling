@@ -11,7 +11,14 @@
         text: "Go to the next branch."
         branch: 2
       -
-        text: "Leave this silly place."
+        text: "Go to the frigid northlands, because there's always a
+          frigid northlands."
+        branch: 3
+      -
+        text: "Leave this silly place, but with a reason."
+        branch: 5
+      -
+        text: "Leave this silly place immediately, without any reason."
         branch: 0
 -
   branch:
@@ -20,14 +27,14 @@
            or Dennis."
     leaf:
       -
-        text: "North"
+        text: "North, to frigidity!"
         branch: 3
       -
-        text: "South (back the way you came)"
+        text: "South, back the way you came!"
         branch: 1
       -
         text: "Dennis"
-        branch: 0
+        branch: 6
 -
   branch:
     number: 3
@@ -42,4 +49,21 @@
 -
   branch:
     number: 4
-    text: "You head on home!"
+    text: "You head on home! Bye bye!"
+-
+  branch:
+    number: 5
+    text: "You leave the dialogue tree, and all its textual glory, behind
+      and go find a nice GUI to settle down with."
+-
+  branch:
+    number: 6
+    text: "Dennis appreciates your interest, but is really just trying to
+      hangout and play video games."
+    leaf:
+      -
+        text: "Join Dennis, and play video games with him."
+        branch: 7
+      -
+        text: "Reconsider your options."
+        branch: 2
