@@ -11,8 +11,8 @@
         text: "Go to the next branch."
         branch: 2
       -
-        text: "Go to the frigid northlands, because there's always a
-          frigid northlands."
+        text: "Go to the frigid north-lands, because there's always a
+          frigid north-lands."
         branch: 3
       -
         text: "Leave this silly place, but with a reason."
@@ -23,7 +23,7 @@
 -
   branch:
     number: 2
-    text: "Ye find yeself at branch 2. Your options are north, south
+    text: "Ye find ye-self at branch 2. Your options are north, south
            or Dennis."
     leaf:
       -
@@ -67,3 +67,8 @@
       -
         text: "Reconsider your options."
         branch: 2
+-
+  branch:
+    number: 7
+    text: "You sit down next to Dennis, and together you conquer all sorts of
+      realms and wizards and stuff. Nice!"
