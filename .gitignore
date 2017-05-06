@@ -41,7 +41,7 @@
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
 
 ##
 # Additions
@@ -52,3 +52,11 @@ Thumbs.db
 *.swp
 .netrwhist
 *.un~
+
+# YARD Related #
+################
+# doc/ is the generated documentation for Yard, which can easily be generated
+# locally with yardoc
+# .yardoc/ is yard metadata, not necessary to be uploaded to GH
+doc/
+.yardoc/
