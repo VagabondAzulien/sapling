@@ -1,0 +1,45 @@
+---
+- trunk: "Example Quest: Learn what it looks like to use Sapling!"
+
+-
+  branch:
+    number: 1
+    text: "You stumble upon the first branch of a dialogue tree.
+           You find yourself at a junction..."
+    leaf:
+      -
+        text: "Go to the next branch."
+        branch: 2
+      -
+        text: "Leave this silly place."
+        branch: 0
+-
+  branch:
+    number: 2
+    text: "Ye find yeself at branch 2. Your options are north, south
+           or Dennis."
+    leaf:
+      -
+        text: "North"
+        branch: 3
+      -
+        text: "South (back the way you came)"
+        branch: 1
+      -
+        text: "Dennis"
+        branch: 0
+-
+  branch:
+    number: 3
+    text: "It's cold up here. You decide to go someplace else!"
+    leaf:
+      -
+        text: "Head on home."
+        branch: 4
+      -
+        text: "Head south (back the way you came)"
+        branch: 2
+-
+  branch:
+    number: 4
+    text: "You head on home!"
