@@ -22,7 +22,7 @@ through leafs, which are the actual choices.
 
 You can experience this yourself, by loading "Example Quest! - A Meta Dialogue
 Tree!". You can find the tree itself at [trees/example\_quest.yaml](
-trees/example_quest.yaml). To run it, just type `sapling -t
+var/trees/example_quest.yaml). To run it, just type `sapling -t
 trees/example_quest.yaml`.
 
 ## Building a New Tree
@@ -31,14 +31,15 @@ To build a new tree, you have two options. You can manually edit a configuration
 file, or go through the construction wizard. Either way, the end result is a
 plain-text configuration file, which can be easily shared, edited, and viewed.
 For more details on the configuration file itself, check out the [Configuration
- File documentation](docs/config_file.md), or the self-documented [configuration
- file example](docs/config_file_example.yaml). Alternatively, you can checkout
-[Example Quest](trees/example_quest.yaml) for a complete treel
+File documentation](var/docs/config_file.md), or the self-documented
+[configuration file example](var/docs/config_file_example.yaml). Alternatively,
+you can checkout [Example Quest](var/trees/example_quest.yaml) for a complete
+tree.
 
 ### Manual Edit
 
 1. Open your preferred text editor.
-2. Refer to the [Configuration File documentation](docs/config_file.md)
+2. Refer to the [Configuration File documentation](var/docs/config_file.md)
 3. Make your changes.
 4. Save your changes.
 
@@ -53,7 +54,7 @@ For more details on the configuration file itself, check out the [Configuration
 5. Save your changes.
 
 More details on the editor can be found in the [Editor
-documentation](docs/editor.md).
+documentation](var/docs/editor.md).
 
 ## Contributing
 
