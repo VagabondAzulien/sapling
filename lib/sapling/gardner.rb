@@ -45,7 +45,6 @@ module Gardner
   # @return [Hash] The tree without the trunk
   def self.prune_trunk(tree)
     trunk = tree.shift
-    puts "Welcome to Sapling, a Dialogue Tree Utility.\n"
     40.times { print "-" }
     puts "\n#{trunk["trunk"]}"
     40.times { print "-" }
@@ -59,34 +58,11 @@ module Gardner
   #
   # @param file [File] The dialogue tree file
   # @return [Hash] The final, constructed data set
-  def self.grow(file)
-      tree = YAML.load_file(file[0])
-      tree = Gardner.prune_trunk(tree)
-      branches = Gardner.prune_branches(tree)
+  def self.grow(tree)
+      trunk = Gardner.prune_trunk(tree)
+      branches = Gardner.prune_branches(trunk)
 
       return branches
-  end
-
-  # Verify that a file is a dialogue tree file.
-  #
-  # @param file [File] The provided file
-  # @return [Boolean] True if the file is a tree; false otherwise
-  def self.verify_tree(file)
-    results = []
-    begin
-      tree = YAML.load_file(file)
-      results << tree[0].keys.include?("trunk")
-      results << tree[1]["branch"].keys.include?("number")
-      results << tree[1]["branch"].keys.include?("text")
-      results << tree[1]["branch"].keys.include?("leaf")
-    rescue
-      puts "Sorry chummer, I don't think this is a tree."
-      puts "Verify your YAML file is formatted properly."
-      results << false
-    end
-
-    results.include?(false) ? false : true
-
   end
 
 end
