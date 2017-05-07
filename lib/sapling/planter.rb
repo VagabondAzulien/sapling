@@ -32,7 +32,7 @@ module Planter
     # display the trunk, since otherwise it's displayed a single time then gone
     # forever (until next time).
     #
-    # @param branch [Integer] The number of the branch to be displayed.
+    # @param branch_no [Integer] The number of the branch to be displayed.
     def dig(branch_no)
       branch = @plot.branches[branch_no]
 

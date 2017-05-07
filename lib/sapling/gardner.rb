@@ -56,7 +56,7 @@ module Gardner
 
   # The main method for Sapling. From here, the tree is grown.
   #
-  # @param file [File] The dialogue tree file
+  # @param tree [File] The dialogue tree file
   # @return [Hash] The final, constructed data set
   def self.grow(tree)
       trunk = Gardner.prune_trunk(tree)
