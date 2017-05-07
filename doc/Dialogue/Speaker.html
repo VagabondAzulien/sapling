@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/sapling.rb</dd>
+    <dd>lib/sapling/dialogue.rb</dd>
   </dl>
   
 </div>
@@ -117,6 +117,33 @@ tree.</p>
 
   <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#debug-instance_method" title="#debug (instance method)">#<strong>debug</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Status of verbose/debug mode.</p>
+</div></span>
+  
+</li>
+
     
       <li class="public ">
   <span class="summary_signature">
@@ -265,15 +292,17 @@ reached.</p>
       <pre class="lines">
 
 
-106
-107
-108</pre>
+15
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/dialogue.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@file</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@debug</span> <span class='op'>=</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -286,9 +315,52 @@ reached.</p>
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="file=-instance_method"></span>
+      <span id="debug=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="file-instance_method">
+  <h3 class="signature first" id="debug-instance_method">
+  
+    #<strong>debug</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Status of verbose/debug mode. True = on; false = off.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling/dialogue.rb', line 13</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_debug'>debug</span>
+  <span class='ivar'>@debug</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="file=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="file-instance_method">
   
     #<strong>file</strong>  &#x21d2; <tt>Object</tt> 
   
@@ -313,12 +385,12 @@ reached.</p>
       <pre class="lines">
 
 
-104
-105
-106</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/dialogue.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_file'>file</span>
   <span class='ivar'>@file</span>
@@ -362,32 +434,36 @@ reached.</p>
       <pre class="lines">
 
 
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123</pre>
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/dialogue.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_conversation'>conversation</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tree'>tree</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Gardner.html" title="Gardner (module)">Gardner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_grow'><span class='object_link'><a href="../Gardner.html#grow-class_method" title="Gardner.grow (method)">grow</a></span></span><span class='lparen'>(</span><span class='ivar'>@file</span><span class='rparen'>)</span>
 
   <span class='int'>10</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n[ Branch: 1 ]</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@debug</span>
   <span class='id identifier rubyid_next_branch'>next_branch</span> <span class='op'>=</span> <span class='id identifier rubyid_talk'>talk</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>until</span> <span class='id identifier rubyid_next_branch'>next_branch</span> <span class='op'>==</span> <span class='int'>0</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n[ Branch: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_next_branch'>next_branch</span><span class='embexpr_end'>}</span><span class='tstring_content'> ]</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@debug</span>
     <span class='id identifier rubyid_next_branch'>next_branch</span> <span class='op'>=</span> <span class='id identifier rubyid_talk'>talk</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='lbracket'>[</span><span class='id identifier rubyid_next_branch'>next_branch</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_tree'>tree</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_tree'>tree</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_exit'>exit</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -459,42 +535,47 @@ reached.</p>
       <pre class="lines">
 
 
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159</pre>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/dialogue.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_talk'>talk</span><span class='lparen'>(</span><span class='id identifier rubyid_branch'>branch</span><span class='rparen'>)</span>
+
   <span class='comment'># If there are no options on this branch, we assume it&#39;s a terminal
 </span>  <span class='comment'># branch. Return 0, and end the program.
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -507,21 +588,24 @@ reached.</p>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n\n</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_each_pair'>each_pair</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span><span class='id identifier rubyid_v'>v</span><span class='op'>|</span>
     <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t\t [ Goes to branch </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> ]</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@debug</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_valid_options'>valid_options</span><span class='embexpr_end'>}</span><span class='tstring_content'>]&gt; </span><span class='tstring_end'>&quot;</span></span>
   <span class='const'>STDOUT</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
 
-  <span class='kw'>until</span> <span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span>
+  <span class='kw'>until</span> <span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='id identifier rubyid_response'>response</span> <span class='op'>==</span> <span class='int'>0</span>
     <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[## Invalid options. </span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Valid options are </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_valid_options'>valid_options</span><span class='embexpr_end'>}</span><span class='tstring_content'>, or 0 to exit.</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n[</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_valid_options'>valid_options</span><span class='embexpr_end'>}</span><span class='tstring_content'>]&gt; </span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='kw'>end</span>
 
+
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
   <span class='int'>10</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>*</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='int'>0</span> <span class='kw'>if</span> <span class='id identifier rubyid_response'>response</span> <span class='op'>==</span> <span class='int'>0</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n(Your choice: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_response'>response</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>return</span> <span class='id identifier rubyid_branch'>branch</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>options</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_response'>response</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
 <span class='kw'>end</span></pre>
@@ -535,7 +619,7 @@ reached.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat May  6 18:16:02 2017 by
+  Generated on Sun May  7 16:58:49 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.2.5).
 </div>
