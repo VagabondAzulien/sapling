@@ -55,5 +55,4 @@ def verify_tree(file)
   end
 
   results.include?(false) ? false : true
-
 end
