@@ -4,7 +4,7 @@ require_relative './utility'
 
 # Planter is the module for creating or editing a tree.
 module Planter
-
+  # A data class
   class Plot
     # The tree, trunk, and branches
     attr_accessor :tree, :trunk, :branches
@@ -13,7 +13,6 @@ module Planter
 
   # Utilities for editing specific parts of a tree.
   class Spade
-
     # The file we parse into a tree
     attr_writer :file
 
