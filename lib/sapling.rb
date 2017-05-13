@@ -41,8 +41,7 @@ module Sapling
           end
 
           puts "Welcome to Sapling, a Dialogue Tree Utility.\n"
-          speaker = Dialogue::Speaker.new
-          speaker.file = YAML.load_file(ARGV[0])
+          speaker = Dialogue::Speaker.new(YAML.load_file(ARGV[0]),false)
           speaker.conversation
         end
 
@@ -62,8 +61,7 @@ module Sapling
           end
 
           puts "Welcome to Sapling, a Dialogue Tree Utility.\n"
-          gardner = Planter::Spade.new
-          gardner.file = tree
+          gardner = Planter::Spade.new(tree)
           gardner.plant
         end
 
