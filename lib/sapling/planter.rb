@@ -21,7 +21,7 @@ module Planter
     def plant
       @plot = Plot.new
       @plot.tree = @file
-      @plot.trunk = @file.shift.values[0]
+      @plot.trunk = @file.shift
       @plot.branches = Gardner.prune_branches(@file)
 
       dig(1)
@@ -35,22 +35,9 @@ module Planter
     def dig(branch_no)
       branch = @plot.branches[branch_no]
 
-      # Print the trunk
-      40.times { print "-" }
-      puts "\n[ Trunk ]\n#{@plot.trunk}"
-      40.times { print "-" }
-      puts "\n"
-      10.times { print "*" }
+      Gardner.display_trunk(@plot.trunk)
+      Gardner.display_branch(branch, branch_no, true)
 
-      # Print the branch and options
-      puts "\n[ Branch: #{branch_no} ]"
-      puts "\n#{branch["desc"]}\n\n"
-      unless branch["options"].empty?
-        branch["options"].each_pair do |k,v|
-          puts "\t#{k}: #{v.keys[0]}"
-          puts "\t\t [ Goes to branch #{v.values[0]} ]"
-        end
-      end
     end
 
     # Edit the trunk of the tree
