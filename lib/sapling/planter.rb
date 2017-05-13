@@ -4,11 +4,30 @@ require_relative './utility'
 
 # Planter is the module for creating or editing a tree.
 module Planter
-  # A data class
+  # In-memory tree
   class Plot
     # The tree, trunk, and branches
     attr_accessor :tree, :trunk, :branches
 
+    # Edit the trunk of the tree
+    def edit_trunk
+        puts "Edit trunk"
+    end
+
+    # Edit a branch on the tree
+    #
+    # @param branch [Integer] The number of the branch to be edited.
+    def edit_branch(branch)
+        puts "Edit current branch"
+    end
+
+    # Edit a leaf on a branch, grasshopper
+    #
+    # @param branch [Integer] The number of the branch to be edited.
+    # @param leaf [Hash] The leaf hash to be edited.
+    def edit_leaf(branch, leaf)
+
+    end
   end
 
   # Utilities for editing specific parts of a tree.
@@ -16,15 +35,25 @@ module Planter
     # The file we parse into a tree
     attr_writer :file
 
-    # Establish a new Plot, which is basically an object for storing information
-    # for us. From here, we start gardening.
+    def initialize(file)
+      @file=file
+    end
+
+    # Establish and populate a new Plot (in-memory tree), then control the flow
+    # of editing the Plot
     def plant
       @plot = Plot.new
       @plot.tree = @file
       @plot.trunk = @file.shift
       @plot.branches = Gardner.prune_branches(@file)
 
-      dig(1)
+      next_branch = dig(1)
+      until next_branch == 0 do
+        next_branch = dig(next_branch)
+      end
+
+      puts "\n#{@plot.branches[0]["desc"]}"
+      exit
     end
 
     # Function for displaying a single branch in debug mode. We also always
@@ -38,27 +67,75 @@ module Planter
       Gardner.display_trunk(@plot.trunk)
       Gardner.display_branch(branch, branch_no, true)
 
+      response = get_response(branch)
+      to_branch = parse_response(response, branch_no)
+
+      return to_branch
     end
 
-    # Edit the trunk of the tree
-    def edit_trunk
-
-    end
-
-    # Edit a branch on the tree
+    # Get a response for the displayed branch
     #
-    # @param branch [Integer] The number of the branch to be edited.
-    def edit_branch(branch)
+    # @param branch [Hash] A branch data set
+    # @return [Integer] the next branch
+    def get_response(branch)
+      total_branches = @plot.branches.count - 1
+      valid_options = ["1-#{total_branches}","t","a","b","x","l","s","q"]
+      print_options = valid_options.join(",")
 
+      print "\n[#{print_options}]> "
+      STDOUT.flush
+      response = STDIN.gets.chomp.to_s.downcase
+
+      until valid_options.include?(response) or response.to_i.between?(1,total_branches)
+        print "[## Invalid response. "
+        print "Valid options are #{print_options}"
+        print "\n[#{print_options}]> "
+        response = STDIN.gets.chomp.to_s.downcase
+      end
+
+      return response
     end
 
-    # Edit a leaf on a branch, grasshopper
+    # Parse the response from get_response
     #
-    # @param branch [Integer] The number of the branch to be edited.
-    # @param leaf [Hash] The leaf hash to be edited.
-    def edit_leaf(branch, leaf)
+    # @param response [String] The option selected
+    # @param branch_no [Integer] The currently-displayed branch
+    # @return [Integer] the branch to display
+    def parse_response(response, branch_no)
+      return response.to_i if response.to_i >= 1
 
+      case response.to_s.downcase
+      when "t"
+        @plot.edit_trunk
+        return branch_no
+      when "a"
+        puts "Add new branch"
+        return branch_no
+      when "b"
+        @plot.edit_branch(branch_no)
+        return branch_no
+      when "x"
+        puts "Delete current branch"
+        return branch_no
+      when "l"
+        puts "Edit leaves"
+        return branch_no
+      when "s"
+        puts "Save changes"
+        return branch_no
+      when "q"
+        print "Unsaved changes will be lost. Still quit? [y/n]> "
+        verify = STDIN.gets.chomp.to_s.downcase
+
+        return 0 if verify == "y"
+
+        return branch_no
+      else
+        puts "Something else!"
+        return branch_no
+      end
     end
+
 
   end
 
@@ -80,24 +157,26 @@ Process:
 
 - At this point, editing is the same
   - Prompt provides options:
-    - B # - Go to Branch #
-    - T - Edit Trunk
-    - D - Edit Current Branch description
-    - X - Delete Current Branch
-    - L A - Add a new Leaf
-    - L # D - Edit Leaf # description
-    - L # B - Edit Leaf # branch destination
-    - L # X - Remove Leaf #
-    - S - Save Changes (write to the file)
-    - Q - Quit without saving
+    - #: Go to that branch number
+    - T: Modify the tree trunk
+    - A: Add a new branch (append to list of branches)
+    - B: Modify the current branch description
+    - X: Delete the current branch (does this renumber branches?)
+    - L: Modify the current leaves, respond with leaf prompt
+    - S: Save changes
+    - Q: Quit
+
+- Example prompt:
+  [ 0-5,T,A,B,X,L,S,Q ]>
+- Leaf prompt:
+  [ Leaves:
 
 Details:
 
 - Regardless of the file existing, the user will be editing a Hash, not the actual YAML file
-  - Use Gardner to build the tree (either existing or skeleton)
-  - Use Dialog to interact with the tree
-  - Overwrite prompt with Planter prompt
-  - On changes, re-build the tree, and restart dialogue from most recent branch
+- Use Gardner to build and interact with the tree
+- Use Planter to modify the tree "in memory" (aka, the hash)
+- Use Dialog to interact with the tree "in memory", to test-run it
 - After each edit option, display the current branch with the new changes.
 
 =end
