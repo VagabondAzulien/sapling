@@ -2,8 +2,7 @@ require_relative './gardner'
 
 # Dialogue is the module for traversing an existing tree.
 module Dialogue
-  # Speaker holds the functionality for viewing and going through a dialogue
-  # tree.
+  # Speaker holds the functionality for going through a dialogue tree.
   class Speaker
     # The file, which should be a dialogue tree YAML file.
     attr_accessor :file
