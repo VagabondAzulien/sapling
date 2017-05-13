@@ -20,7 +20,7 @@ module Dialogue
     def conversation()
       tree = Gardner.prune_trunk(@file)
 
-      display_trunk(tree[0])
+      Gardner.display_trunk(tree[0])
       branches = Gardner.prune_branches(tree[1])
 
       next_branch = 1
@@ -45,7 +45,7 @@ module Dialogue
         return 0
       end
 
-      display_branch(branch, branch_no)
+      Gardner.display_branch(branch, branch_no, @debug)
 
       response = get_response(branch)
 
@@ -57,30 +57,6 @@ module Dialogue
       end
 
       return response
-    end
-
-    # Format and display the trunk
-    #
-    # @param trunk [Hash] The trunk hash
-    def display_trunk(trunk)
-      40.times { print "-" }
-      puts "\n#{trunk["trunk"]}"
-      40.times { print "-" }
-      puts "\n"
-    end
-
-    # Format and display a branch
-    #
-    # @param branch [Hash] A branch data set
-    # @param branch_no [Integer] The branch number
-    def display_branch(branch, branch_no)
-      puts "\n[ Branch: #{branch_no} ]" if @debug
-      puts "\n#{branch["desc"]}\n\n"
-
-      branch["options"].each_pair do |k,v|
-        puts "\t#{k}: #{v.keys[0]}"
-        puts "\t\t [ Goes to branch #{v.values[0]} ]" if @debug
-      end
     end
 
     # Get a response for the displayed branch
