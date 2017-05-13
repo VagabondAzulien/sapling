@@ -44,4 +44,29 @@ module Gardner
 
     return [trunk,tree]
   end
+
+  # Format and display the trunk
+  #
+  # @param trunk [Hash] The trunk hash
+  def self.display_trunk(trunk)
+    40.times { print "-" }
+    puts "\n#{trunk["trunk"]}"
+    40.times { print "-" }
+    puts "\n"
+  end
+
+  # Format and display a branch and the options
+  #
+  # @param branch [Hash] A branch data set
+  # @param branch_no [Integer] The branch number
+  # @param debug [Boolean] Status of showing debug information
+  def self.display_branch(branch, branch_no, debug)
+    puts "\n[ Branch: #{branch_no} ]" if debug
+    puts "\n#{branch["desc"]}\n\n"
+
+    branch["options"].each_pair do |k,v|
+      puts "\t#{k}: #{v.keys[0]}"
+      puts "\t\t[ Goes to branch #{v.values[0]} ]\n" if debug
+    end
+  end
 end
