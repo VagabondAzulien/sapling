@@ -9,9 +9,9 @@ module Dialogue
     # Status of verbose/debug mode. True = on; false = off.
     attr_accessor :debug
 
-    def initialize
-      @file = ""
-      @debug = false
+    def initialize(file="", debug=false)
+      @file = file
+      @debug = debug
     end
 
     # Conversation handles navigating the tree, until the option to end is
