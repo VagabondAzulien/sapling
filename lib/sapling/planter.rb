@@ -11,7 +11,17 @@ module Planter
 
     # Edit the trunk of the tree
     def edit_trunk
-        puts "Edit trunk"
+      puts "Current Trunk:\n"
+      Gardner.display_trunk(@trunk, true)
+      print "[ =EDITING= ](CTRL-C to abort)> "
+      STDOUT.flush
+      begin
+        new_trunk = STDIN.gets.to_s
+      rescue Interrupt
+        puts "\n**Aborting edit**\n\n"
+        new_trunk = @trunk["trunk"]
+      end
+      @trunk["trunk"] = new_trunk
     end
 
     # Edit a branch on the tree
@@ -64,7 +74,7 @@ module Planter
     def dig(branch_no)
       branch = @plot.branches[branch_no]
 
-      Gardner.display_trunk(@plot.trunk)
+      Gardner.display_trunk(@plot.trunk, true)
       Gardner.display_branch(branch, branch_no, true)
 
       response = get_response(branch)
@@ -102,28 +112,38 @@ module Planter
     # @param branch_no [Integer] The currently-displayed branch
     # @return [Integer] the branch to display
     def parse_response(response, branch_no)
-      return response.to_i if response.to_i >= 1
+      10.times { print "*" }
+      print "\n(Your choice: "
+
+      if response.to_i >= 1
+        print "Change to branch #{response.to_i})\n\n"
+        return response.to_i
+
+      end
 
       case response.to_s.downcase
       when "t"
+        print "Edit the trunk.)\n\n"
         @plot.edit_trunk
         return branch_no
       when "a"
-        puts "Add new branch"
+        print "Add a new branch.)\n\n"
         return branch_no
       when "b"
+        print "Edit the current branch.)\n\n"
         @plot.edit_branch(branch_no)
         return branch_no
       when "x"
-        puts "Delete current branch"
+        print "Delete the current branch.)\n\n"
         return branch_no
       when "l"
-        puts "Edit leaves"
+        print "Edit leaves of current branch.)\n\n"
         return branch_no
       when "s"
-        puts "Save changes"
+        print "Save changes.)\n\n"
         return branch_no
       when "q"
+        print "Quit without saving.)\n\n"
         print "Unsaved changes will be lost. Still quit? [y/n]> "
         verify = STDIN.gets.chomp.to_s.downcase
 
@@ -131,14 +151,11 @@ module Planter
 
         return branch_no
       else
-        puts "Something else!"
+        print "Unknown option. Returning to current branch.)\n\n"
         return branch_no
       end
     end
-
-
   end
-
 end
 
 =begin
@@ -169,7 +186,6 @@ Process:
 - Example prompt:
   [ 0-5,T,A,B,X,L,S,Q ]>
 - Leaf prompt:
-  [ Leaves:
 
 Details:
 
