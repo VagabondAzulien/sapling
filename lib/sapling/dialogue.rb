@@ -19,7 +19,7 @@ module Dialogue
     def conversation()
       tree = Gardner.prune_trunk(@file)
 
-      Gardner.display_trunk(tree[0])
+      Gardner.display_trunk(tree[0], false)
       branches = Gardner.prune_branches(tree[1])
 
       next_branch = 1
