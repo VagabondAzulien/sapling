@@ -48,8 +48,10 @@ module Gardner
   # Format and display the trunk
   #
   # @param trunk [Hash] The trunk hash
-  def self.display_trunk(trunk)
+  # @param debug [Boolean] The status of showing debug information
+  def self.display_trunk(trunk, debug=false)
     40.times { print "-" }
+    puts "\n[ Trunk ]\n" if debug
     puts "\n#{trunk["trunk"]}"
     40.times { print "-" }
     puts "\n"
@@ -60,7 +62,7 @@ module Gardner
   # @param branch [Hash] A branch data set
   # @param branch_no [Integer] The branch number
   # @param debug [Boolean] Status of showing debug information
-  def self.display_branch(branch, branch_no, debug)
+  def self.display_branch(branch, branch_no, debug=false)
     puts "\n[ Branch: #{branch_no} ]" if debug
     puts "\n#{branch["desc"]}\n\n"
 
