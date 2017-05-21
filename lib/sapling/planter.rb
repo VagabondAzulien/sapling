@@ -13,7 +13,7 @@ module Planter
     def edit_trunk
       puts "Current Trunk:\n"
       Gardner.display_trunk(@trunk, true)
-      print "[ =EDITING= ](CTRL-C to abort)> "
+      print "\n[ =EDITING= ](CTRL-C to abort)> "
       STDOUT.flush
       begin
         new_trunk = STDIN.gets.to_s
@@ -27,8 +27,18 @@ module Planter
     # Edit a branch on the tree
     #
     # @param branch [Integer] The number of the branch to be edited.
-    def edit_branch(branch)
-        puts "Edit current branch"
+    def edit_branch(branch_no)
+      puts "Current Branch:\n"
+      Gardner.display_branch(@branches[branch_no], branch_no, true)
+      print "\n[ =EDITING= ](CTRL-C to abort)> "
+      STDOUT.flush
+      begin
+        new_branch = STDIN.gets.to_s
+      rescue Interrupt
+        puts "\n**Aborting edit**\n\n"
+        new_branch = @branches[branch_no]["desc"]
+      end
+      @branches[branch_no]["desc"] = new_branch
     end
 
     # Edit a leaf on a branch, grasshopper
@@ -46,7 +56,7 @@ module Planter
     attr_writer :file
 
     def initialize(file)
-      @file=file
+      @file = file
     end
 
     # Establish and populate a new Plot (in-memory tree), then control the flow
