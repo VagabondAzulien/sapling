@@ -160,7 +160,8 @@ module Planter
         print "Unsaved changes will be lost. Still quit? [y/n]> "
         verify = STDIN.gets.chomp.to_s.downcase
 
-        return 0 if verify == "y" else branch_no
+        return 0 if verify == "y" 
+        return branch_no
       else
         print "Unknown option. Returning to current branch.)\n\n"
         return branch_no
