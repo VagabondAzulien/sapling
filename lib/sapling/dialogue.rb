@@ -2,6 +2,34 @@ require_relative './gardner'
 
 # Dialogue is the module for traversing an existing tree.
 module Dialogue
+
+  # Format and display the trunk
+  #
+  # @param trunk [Hash] The trunk hash
+  # @param debug [Boolean] The status of showing debug information
+  def self.display_trunk(trunk, debug=false)
+    40.times { print "-" }
+    puts "\n[ Trunk ]\n" if debug
+    puts "\n#{trunk["trunk"]}"
+    40.times { print "-" }
+    puts "\n"
+  end
+
+  # Format and display a branch and the options
+  #
+  # @param branch [Hash] A branch data set
+  # @param branch_no [Integer] The branch number
+  # @param debug [Boolean] Status of showing debug information
+  def self.display_branch(branch, branch_no, debug=false)
+    puts "\n[ Branch: #{branch_no} ]" if debug
+    puts "\n#{branch["desc"]}\n\n"
+
+    branch["options"].each_pair do |k,v|
+      puts "\t#{k}: #{v.keys[0]}"
+      puts "\t\t[ Goes to branch #{v.values[0]} ]\n" if debug
+    end
+  end
+
   # Speaker holds the functionality for going through a dialogue tree.
   class Speaker
     # The file, which should be a dialogue tree YAML file.
@@ -19,7 +47,7 @@ module Dialogue
     def conversation()
       tree = Gardner.prune_trunk(@file)
 
-      Gardner.display_trunk(tree[0], false)
+      Dialogue.display_trunk(tree[0], false)
       branches = Gardner.prune_branches(tree[1])
 
       next_branch = 1
@@ -44,7 +72,7 @@ module Dialogue
         return 0
       end
 
-      Gardner.display_branch(branch, branch_no, @debug)
+      Dialogue.display_branch(branch, branch_no, @debug)
 
       response = get_response(branch)
 
