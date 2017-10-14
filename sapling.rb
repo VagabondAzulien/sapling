@@ -3,10 +3,7 @@
 require 'optparse'
 require 'yaml'
 
-require_relative 'sapling/dialogue'
-require_relative 'sapling/gardner'
-require_relative 'sapling/planter'
-require_relative 'sapling/utility'
+Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
 
 # Sapling is the main module for the program. From here, the rest of the world
 # starts building.
