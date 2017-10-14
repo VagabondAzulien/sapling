@@ -4,15 +4,17 @@ require_relative './utility'
 
 # Planter is the module for creating or editing a tree.
 module Planter
+
   # In-memory tree
   class Plot
+
     # The tree, trunk, and branches
     attr_accessor :tree, :trunk, :branches
 
     # Edit the trunk of the tree
     def edit_trunk
       puts "Current Trunk:\n"
-      Gardner.display_trunk(@trunk, true)
+      Dialogue.display_trunk(@trunk, true)
       print "\n[ =EDITING= ](CTRL-C to abort)> "
       STDOUT.flush
       begin
@@ -29,7 +31,7 @@ module Planter
     # @param branch [Integer] The number of the branch to be edited.
     def edit_branch(branch_no)
       puts "Current Branch:\n"
-      Gardner.display_branch(@branches[branch_no], branch_no, true)
+      Dialogue.display_branch(@branches[branch_no], branch_no, true)
       print "\n[ =EDITING= ](CTRL-C to abort)> "
       STDOUT.flush
       begin
@@ -52,6 +54,7 @@ module Planter
 
   # Utilities for editing specific parts of a tree.
   class Spade
+
     # The file we parse into a tree
     attr_writer :file
 
@@ -84,8 +87,8 @@ module Planter
     def dig(branch_no)
       branch = @plot.branches[branch_no]
 
-      Gardner.display_trunk(@plot.trunk, true)
-      Gardner.display_branch(branch, branch_no, true)
+      Dialogue.display_trunk(@plot.trunk, true)
+      Dialogue.display_branch(branch, branch_no, true)
 
       response = get_response(branch)
       to_branch = parse_response(response, branch_no)
@@ -157,9 +160,7 @@ module Planter
         print "Unsaved changes will be lost. Still quit? [y/n]> "
         verify = STDIN.gets.chomp.to_s.downcase
 
-        return 0 if verify == "y"
-
-        return branch_no
+        return 0 if verify == "y" else branch_no
       else
         print "Unknown option. Returning to current branch.)\n\n"
         return branch_no
