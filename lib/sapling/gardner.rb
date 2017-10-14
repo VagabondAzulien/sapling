@@ -2,6 +2,7 @@ require 'yaml'
 
 # Gardner is the module for working with a dialogue tree file
 module Gardner
+
   # Parse the tree array into an array of numbered branches, and ordered leaves.
   #
   # @param tree [Array] The dialogue tree
@@ -43,32 +44,5 @@ module Gardner
     trunk = tree.shift
 
     return [trunk,tree]
-  end
-
-  # Format and display the trunk
-  #
-  # @param trunk [Hash] The trunk hash
-  # @param debug [Boolean] The status of showing debug information
-  def self.display_trunk(trunk, debug=false)
-    40.times { print "-" }
-    puts "\n[ Trunk ]\n" if debug
-    puts "\n#{trunk["trunk"]}"
-    40.times { print "-" }
-    puts "\n"
-  end
-
-  # Format and display a branch and the options
-  #
-  # @param branch [Hash] A branch data set
-  # @param branch_no [Integer] The branch number
-  # @param debug [Boolean] Status of showing debug information
-  def self.display_branch(branch, branch_no, debug=false)
-    puts "\n[ Branch: #{branch_no} ]" if debug
-    puts "\n#{branch["desc"]}\n\n"
-
-    branch["options"].each_pair do |k,v|
-      puts "\t#{k}: #{v.keys[0]}"
-      puts "\t\t[ Goes to branch #{v.values[0]} ]\n" if debug
-    end
   end
 end
