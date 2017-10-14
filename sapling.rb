@@ -3,19 +3,14 @@
 require 'optparse'
 require 'yaml'
 
-require_relative 'sapling/dialogue'
-require_relative 'sapling/gardner'
-require_relative 'sapling/planter'
-require_relative 'sapling/utility'
+Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
 
 # Sapling is the main module for the program. From here, the rest of the world
 # starts building.
 module Sapling
-
   # CLI is the class for option parsing, and the gateway to the program, on the
   # command line
   class CLI
-
     # Option parsing, and gateway to either reading and traversing a tree, or
     # editing/creating a tree.
     def talk(options)
@@ -43,8 +38,7 @@ module Sapling
           end
 
           puts "Welcome to Sapling, a Dialogue Tree Utility.\n"
-          speaker = Dialogue::Speaker.new
-          speaker.file = YAML.load_file(ARGV[0])
+          speaker = Dialogue::Speaker.new(YAML.load_file(ARGV[0]),false)
           speaker.conversation
         end
 
@@ -64,14 +58,13 @@ module Sapling
           end
 
           puts "Welcome to Sapling, a Dialogue Tree Utility.\n"
-          gardner = Planter::Spade.new
-          gardner.file = tree
+          gardner = Planter::Spade.new(tree)
           gardner.plant
         end
 
       end
 
-      # Hacky way of dealing with bad options
+      # Handle bad options gracefully
       begin
         opt_parser.parse!(options)
       rescue OptionParser::InvalidOption
