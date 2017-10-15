@@ -3,7 +3,7 @@
 require 'thor'
 require 'yaml'
 
-Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, '..', 'lib', '*.rb')].each { |file| require file }
 
 # The main Sapling interface.
 class Sapling < Thor
@@ -20,7 +20,7 @@ class Sapling < Thor
     puts 'Welcome to Sapling, a Dialogue Tree Utility.'
     if !tree.empty?
       puts "Loading tree: #{tree}"
-      exit if verify_tree(tree)
+      exit unless verify_tree(tree)
       gardner = Planter::Spade.new(YAML.load_file(tree, false))
     else
       puts 'Creating a new tree!'
@@ -31,13 +31,13 @@ class Sapling < Thor
 
   desc 'serve TREE', 'Load TREE in a web-based interface'
   def serve(tree)
-    exit if verify_tree(tree)
+    exit unless verify_tree(tree)
     puts 'Sinatra will be cool.'
   end
 
   desc 'export TREE', 'Save a portable HTML version of TREE'
   def export(tree)
-    exit if verify_tree(tree)
+    exit unless verify_tree(tree)
     puts 'Cool feature, bro!'
   end
 end
