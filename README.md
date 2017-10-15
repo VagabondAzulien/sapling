@@ -7,7 +7,10 @@
 
 [![Gem
 Version](https://badge.fury.io/rb/sapling-dialogue.svg)](
-https://badge.fury.io/rb/sapling-dialogue)
+https://badge.fury.io/rb/sapling-dialogue) [![Build
+Status](
+https://travis-ci.org/VagabondAzulien/sapling.svg?branch=master)](
+https://travis-ci.org/VagabondAzulien/sapling)
 
 Sapling allows for easy creation and use of dialogue trees.
 
