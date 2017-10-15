@@ -4,6 +4,7 @@ source "https://rubygems.org"
 # Documentation
 gem "rdoc"
 gem "redcarpet"
+gem "thor"
 gem "yard"
 gem "yard-ghpages"
 
