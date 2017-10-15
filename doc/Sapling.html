@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Module: Sapling
+  Class: Sapling
   
     &mdash; Sapling Documentation
   
@@ -59,12 +59,30 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><h1>Module: Sapling
+      <div id="content"><h1>Class: Sapling
   
   
   
 </h1>
 <div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Thor</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Thor</li>
+          
+            <li class="next">Sapling</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
   
 
   
@@ -86,8 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Sapling is the main module for the program. From here, the rest of the
-world starts building.</p>
+<p>The main Sapling interface.</p>
 
 
   </div>
@@ -95,31 +112,275 @@ world starts building.</p>
 <div class="tags">
   
 
-</div><h2>Defined Under Namespace</h2>
-<p class="children">
+</div>
+
+
+
+
+
+
   
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
     
+      <a href="#edit-instance_method" title="#edit (instance method)">#<strong>edit</strong>(tree = &#39;&#39;)  &#x21d2; Object </a>
+    
+
+    
+  </span>
   
-    
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Sapling/CLI.html" title="Sapling::CLI (class)">CLI</a></span>
-    
   
-</p>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>(tree)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>(tree)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#serve-instance_method" title="#serve (instance method)">#<strong>serve</strong>(tree)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
 
 
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="edit-instance_method">
+  
+    #<strong>edit</strong>(tree = &#39;&#39;)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 19</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Welcome to Sapling, a Dialogue Tree Utility.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_tree'>tree</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Loading tree: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_tree'>tree</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_exit'>exit</span> <span class='kw'>unless</span> <span class='id identifier rubyid_verify_tree'><span class='object_link'><a href="top-level-namespace.html#verify_tree-instance_method" title="#verify_tree (method)">verify_tree</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_gardner'>gardner</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Planter.html" title="Planter (module)">Planter</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Planter/Spade.html" title="Planter::Spade (class)">Spade</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Planter/Spade.html#initialize-instance_method" title="Planter::Spade#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Creating a new tree!</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_gardner'>gardner</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Planter.html" title="Planter (module)">Planter</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Planter/Spade.html" title="Planter::Spade (class)">Spade</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Planter/Spade.html#initialize-instance_method" title="Planter::Spade#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="top-level-namespace.html#SKELETON_TREE-constant" title="SKELETON_TREE (constant)">SKELETON_TREE</a></span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_gardner'>gardner</span><span class='period'>.</span><span class='id identifier rubyid_plant'>plant</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="export-instance_method">
+  
+    #<strong>export</strong>(tree)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_exit'>exit</span> <span class='kw'>unless</span> <span class='id identifier rubyid_verify_tree'><span class='object_link'><a href="top-level-namespace.html#verify_tree-instance_method" title="#verify_tree (method)">verify_tree</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Cool feature, bro!</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    #<strong>read</strong>(tree)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
 
 
+11
+12
+13
+14
+15
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_exit'>exit</span> <span class='kw'>unless</span> <span class='id identifier rubyid_verify_tree'><span class='object_link'><a href="top-level-namespace.html#verify_tree-instance_method" title="#verify_tree (method)">verify_tree</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Welcome to Sapling, a Dialogue Tree Utility.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_speaker'>speaker</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Dialogue.html" title="Dialogue (module)">Dialogue</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Dialogue/Speaker.html" title="Dialogue::Speaker (class)">Speaker</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Dialogue/Speaker.html#initialize-instance_method" title="Dialogue::Speaker#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_speaker'>speaker</span><span class='period'>.</span><span class='id identifier rubyid_conversation'>conversation</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="serve-instance_method">
+  
+    #<strong>serve</strong>(tree)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling.rb', line 33</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_serve'>serve</span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_exit'>exit</span> <span class='kw'>unless</span> <span class='id identifier rubyid_verify_tree'><span class='object_link'><a href="top-level-namespace.html#verify_tree-instance_method" title="#verify_tree (method)">verify_tree</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_tree'>tree</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sinatra will be cool.</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 
       <div id="footer">
-  Generated on Sun May  7 16:58:49 2017 by
+  Generated on Sat Oct 14 23:40:01 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.2.5).
+  0.9.9 (ruby-2.4.2).
 </div>
 
     </div>

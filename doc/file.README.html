@@ -59,6 +59,10 @@
 
       <div id="content"><div id='filecontents'><h1>Sapling: A Dialogue Tree CLI Utility</h1>
 
+<p><a href="https://badge.fury.io/rb/sapling-dialogue"><img src="https://badge.fury.io/rb/sapling-dialogue.svg" alt="Gem
+Version"></a> <a href="https://travis-ci.org/VagabondAzulien/sapling"><img src="https://travis-ci.org/VagabondAzulien/sapling.svg?branch=master" alt="Build
+Status"></a></p>
+
 <p>Sapling allows for easy creation and use of dialogue trees.</p>
 
 <p>A dialogue tree is a series of dialogues which follow sequentially, though with
@@ -75,25 +79,25 @@ branch represents a choice taken in the dialogue. Branches flow to each other
 through leafs, which are the actual choices.</p>
 
 <p>You can experience this yourself, by loading &quot;Example Quest! - A Meta Dialogue
-Tree!&quot;. You can find the tree itself at <a href="var/trees/example_quest.yaml">trees/example_quest.yaml</a>. To run it, just type <code>sapling -t
-trees/example_quest.yaml</code>.</p>
+Tree!&quot;. You can find the tree itself at <a href="https://github.com/VagabondAzulien/sapling/blob/master/var/trees/example_quest.yaml">var/trees/example_quest.yaml</a>.
+To run it, just type <code>sapling read path/to/example_quest.yaml</code>.</p>
 
 <h2>Building a New Tree</h2>
 
 <p>To build a new tree, you have two options. You can manually edit a configuration
 file, or go through the construction wizard. Either way, the end result is a
 plain-text configuration file, which can be easily shared, edited, and viewed.
-For more details on the configuration file itself, check out the <a href="var/docs/config_file.md">Configuration
-File documentation</a>, or the self-documented
-<a href="var/docs/config_file_example.yaml">configuration file example</a>. Alternatively,
-you can checkout <a href="var/trees/example_quest.yaml">Example Quest</a> for a complete
-tree.</p>
+For more details on the configuration file itself, check out the <a href="http://www.theinternetvagabond.com/sapling/file.config_file.html">Configuration
+File documentation</a>, or the
+self-documented <a href="http://www.theinternetvagabond.com/sapling/file.config_file_example.html">configuration file example</a>.
+Alternatively, you can checkout <a href="https://github.com/VagabondAzulien/sapling/blob/master/var/trees/example_quest.yaml">Example Quest</a>
+for a complete tree.</p>
 
 <h3>Manual Edit</h3>
 
 <ol>
 <li>Open your preferred text editor.</li>
-<li>Refer to the <a href="var/docs/config_file.md">Configuration File documentation</a></li>
+<li>Refer to the <a href="http://www.theinternetvagabond.com/sapling/file.config_file.html">Configuration File documentation</a></li>
 <li>Make your changes.</li>
 <li>Save your changes.</li>
 </ol>
@@ -101,16 +105,16 @@ tree.</p>
 <h3>Automatic Edit -- Coming Soon(tm)!</h3>
 
 <ol>
-<li>Run the configuration editor: <code>sapling --edit [--new][--file FILE]</code></li>
-<li>If you choose to create a new dialogue, <code>sapling</code> will generate a new file in
-your current directory.</li>
+<li>Run the configuration editor: <code>sapling edit [TREE]</code></li>
+<li>If you don&#39;t include a TREE, <code>sapling</code> will create a new tree in the current
+directory.</li>
 <li>If you choose to modify an existing file, <code>sapling</code> will open the tree at the
 trunk, and show you the first branch.</li>
 <li>Make your changes.</li>
 <li>Save your changes.</li>
 </ol>
 
-<p>More details on the editor can be found in the <a href="var/docs/editor.md">Editor
+<p>More details on the editor can be found in the <a href="http://www.theinternetvagabond.com/sapling/file.editor.html">Editor
 documentation</a>.</p>
 
 <h2>Contributing</h2>
@@ -120,7 +124,7 @@ documentation</a>.</p>
 <ol>
 <li>Fork this repository.</li>
 <li>In your fork, make your changes.</li>
-<li>Make sure your changes respect the <a href="CONTRIBUTING.md">contribution
+<li>Make sure your changes respect the <a href="http://www.theinternetvagabond.com/sapling/file.CONTRIBUTING.html">contribution
 guidelines</a>.</li>
 <li>Submit a pull request.</li>
 </ol>
@@ -128,13 +132,13 @@ guidelines</a>.</li>
 <h2>License</h2>
 
 <p>Sapling is licensed under the MIT license. The full text can be found in
-<a href="LICENSE">LICENSE</a>.</p>
+<a href="http://www.theinternetvagabond.com/sapling/file.LICENSE.html">LICENSE</a>.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Sun May  7 16:58:49 2017 by
+  Generated on Sat Oct 14 23:40:01 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.2.5).
+  0.9.9 (ruby-2.4.2).
 </div>
 
     </div>

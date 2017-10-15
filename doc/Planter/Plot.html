@@ -99,7 +99,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>In-memory tree</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -192,6 +203,89 @@
 
 
 
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit_branch-instance_method" title="#edit_branch (instance method)">#<strong>edit_branch</strong>(branch_no)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Edit a branch on the tree.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit_leaf-instance_method" title="#edit_leaf (instance method)">#<strong>edit_leaf</strong>(branch, leaf)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Edit a leaf on a branch, grasshopper.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#edit_trunk-instance_method" title="#edit_trunk (instance method)">#<strong>edit_trunk</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Edit the trunk of the tree.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
 
   <div id="instance_attr_details" class="attr_details">
     <h2>Instance Attribute Details</h2>
@@ -224,12 +318,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_branches'>branches</span>
   <span class='ivar'>@branches</span>
@@ -267,12 +361,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tree'>tree</span>
   <span class='ivar'>@tree</span>
@@ -310,12 +404,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trunk'>trunk</span>
   <span class='ivar'>@trunk</span>
@@ -328,12 +422,237 @@
   </div>
 
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="edit_branch-instance_method">
+  
+    #<strong>edit_branch</strong>(branch_no)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Edit a branch on the tree</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>branch</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of the branch to be edited.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edit_branch'>edit_branch</span><span class='lparen'>(</span><span class='id identifier rubyid_branch_no'>branch_no</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Current Branch:\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'><span class='object_link'><a href="../Dialogue.html" title="Dialogue (module)">Dialogue</a></span></span><span class='period'>.</span><span class='id identifier rubyid_display_branch'><span class='object_link'><a href="../Dialogue.html#display_branch-class_method" title="Dialogue.display_branch (method)">display_branch</a></span></span><span class='lparen'>(</span><span class='ivar'>@branches</span><span class='lbracket'>[</span><span class='id identifier rubyid_branch_no'>branch_no</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_branch_no'>branch_no</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n[ =EDITING= ](CTRL-C to abort)&gt; </span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'>STDOUT</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_new_branch'>new_branch</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>rescue</span> <span class='const'>Interrupt</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n**Aborting edit**\n\n</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_new_branch'>new_branch</span> <span class='op'>=</span> <span class='ivar'>@branches</span><span class='lbracket'>[</span><span class='id identifier rubyid_branch_no'>branch_no</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@branches</span><span class='lbracket'>[</span><span class='id identifier rubyid_branch_no'>branch_no</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>desc</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_branch'>new_branch</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="edit_leaf-instance_method">
+  
+    #<strong>edit_leaf</strong>(branch, leaf)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Edit a leaf on a branch, grasshopper</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>branch</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The number of the branch to be edited.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>leaf</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The leaf hash to be edited.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edit_leaf'>edit_leaf</span><span class='lparen'>(</span><span class='id identifier rubyid_branch'>branch</span><span class='comma'>,</span> <span class='id identifier rubyid_leaf'>leaf</span><span class='rparen'>)</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="edit_trunk-instance_method">
+  
+    #<strong>edit_trunk</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Edit the trunk of the tree</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/sapling/planter.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_edit_trunk'>edit_trunk</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Current Trunk:\n</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'><span class='object_link'><a href="../Dialogue.html" title="Dialogue (module)">Dialogue</a></span></span><span class='period'>.</span><span class='id identifier rubyid_display_trunk'><span class='object_link'><a href="../Dialogue.html#display_trunk-class_method" title="Dialogue.display_trunk (method)">display_trunk</a></span></span><span class='lparen'>(</span><span class='ivar'>@trunk</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n[ =EDITING= ](CTRL-C to abort)&gt; </span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'>STDOUT</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_new_trunk'>new_trunk</span> <span class='op'>=</span> <span class='const'>STDIN</span><span class='period'>.</span><span class='id identifier rubyid_gets'>gets</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>rescue</span> <span class='const'>Interrupt</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n**Aborting edit**\n\n</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_new_trunk'>new_trunk</span> <span class='op'>=</span> <span class='ivar'>@trunk</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trunk</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+  <span class='ivar'>@trunk</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>trunk</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_new_trunk'>new_trunk</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
       <div id="footer">
-  Generated on Sun May  7 16:58:49 2017 by
+  Generated on Sat Oct 14 23:40:01 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.9 (ruby-2.2.5).
+  0.9.9 (ruby-2.4.2).
 </div>
 
     </div>
