@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'Sapling'
+  s.name        = 'sapling-dialogue'
   s.version     = '0.1.0'
   s.executables << 'sapling'
   s.date        = '2017-10-14'
