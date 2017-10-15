@@ -3,13 +3,13 @@
 require 'thor'
 require 'yaml'
 
-Dir[File.join(__dir__, '..', 'lib', '*.rb')].each { |file| require file }
+Dir[File.join(__dir__, 'sapling', '*.rb')].each { |file| require file }
 
 # The main Sapling interface.
 class Sapling < Thor
   desc 'read TREE', 'Load and traverse the TREE'
   def read(tree)
-    exit if verify_tree(tree)
+    exit unless verify_tree(tree)
     puts 'Welcome to Sapling, a Dialogue Tree Utility.'
     speaker = Dialogue::Speaker.new(YAML.load_file(tree), false)
     speaker.conversation
@@ -41,5 +41,3 @@ class Sapling < Thor
     puts 'Cool feature, bro!'
   end
 end
-
-Sapling.start(ARGV)
