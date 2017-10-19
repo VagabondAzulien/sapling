@@ -84,16 +84,15 @@ module Dialogue
 
       print "\n[#{valid_options}]> "
       STDOUT.flush
-      response = STDIN.gets.chomp.to_i
+      response = STDIN.gets.chomp
 
-      until branch['options'].keys.include?(response) || response.zero?
-        print '[## Invalid options. '
-        print "Valid options are #{valid_options}, or 0 to exit."
-        print "\n[#{valid_options}]> "
-        response = STDIN.gets.chomp.to_i
+      until valid_options.include?(response) || response.to_i.zero?
+        print "[## Invalid options. Valid options are #{valid_options}," \
+          "or 0 to exit.\n[#{valid_options}]> "
+        response = STDIN.gets.chomp
       end
 
-      response
+      response.to_i
     end
 
     # Check if a branch is terminal
