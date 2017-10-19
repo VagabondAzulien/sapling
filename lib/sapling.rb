@@ -11,8 +11,8 @@ class Sapling < Thor
   def read(file)
     puts 'Welcome to Sapling, a Dialogue Tree Utility.'
     exit unless verify_tree(file)
-    tree = Gardner::Plot.new(YAML.load_file(file), false)
-    speaker = Dialogue::Speaker.new(tree)
+    tree = Gardner::Plot.new(YAML.load_file(file))
+    speaker = Dialogue::Speaker.new(tree, false)
     speaker.conversation
   end
 
