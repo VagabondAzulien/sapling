@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'sapling-dialogue'
-  s.version     = '0.1.1'
+  s.version     = '0.1.2'
   s.executables << 'sapling'
   s.date        = '2017-10-19'
   s.summary     = 'A Dialogue Tree Utility'
