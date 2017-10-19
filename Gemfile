@@ -9,4 +9,5 @@ gem "yard"
 gem "yard-ghpages"
 
 # Testing
+gem "minitest"
 gem "rubocop"
