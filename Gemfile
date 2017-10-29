@@ -1,12 +1,21 @@
 # frozen_string_literal: true
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-# Documentation
-gem "rdoc"
-gem "redcarpet"
-gem "thor"
-gem "yard"
-gem "yard-ghpages"
+ruby '2.4.2'
 
-# Testing
-gem "rubocop"
+gem 'thor'
+
+group :documentation do
+  gem 'rdoc'
+  gem 'redcarpet'
+  gem 'yard'
+  gem 'yard-ghpages'
+end
+
+group :test do
+  gem 'rubocop'
+end
+
+group :web do
+  gem 'rack'
+end
