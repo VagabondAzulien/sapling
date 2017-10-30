@@ -6,6 +6,7 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
+    rack (2.0.3)
     rainbow (2.2.2)
       rake
     rake (11.3.0)
@@ -30,6 +31,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rack
   rdoc
   redcarpet
   rubocop
@@ -37,5 +39,8 @@ DEPENDENCIES
   yard
   yard-ghpages
 
+RUBY VERSION
+   ruby 2.4.2p198
+
 BUNDLED WITH
-   1.14.6
+   1.15.4
