@@ -7,7 +7,9 @@ Gem::Specification.new do |s|
   s.description = 'Create, edit, and traverse dialogue trees'
   s.authors     = ['Bill Niblock']
   s.email       = 'azulien@gmail.com'
-  s.files       = Dir['lib/**/*.rb'] + Dir['bin/*']
+  s.files       = Dir['lib/**/*.rb'] + 
+                  Dir['bin/*'] +
+                  Dir['var/trees/*']
   s.homepage    = 'http://www.theinternetvagabond.com/sapling/'
   s.license     = 'MIT'
 end
